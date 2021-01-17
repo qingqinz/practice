@@ -61,19 +61,11 @@ public class TestHiveclient {
 
     public static void main(String[] args) throws InterruptedException {
 
-        String dataxBasePath = "/Users/zqq/Downloads/datax-mini/";
-        //对执行命令的参数进行补充和完善(补充不从properties配置文件或DB获取的参数）
-        String argsStr = "-DhiveUserName=root -DhiveJdbcUrl=jdbc:hive2://172.16.10.154:10000/checkorgdev -DhivePassword=zj2018  ";
-        String ftpFileToLoad ="/Users/zqq/Downloads/bankfilepath/scan/titic20200731001/20201101/titic20200731001-GRHQCKFHZ-20201101.txt";
-        String hdfsFileName =  "T_KJ_GRHCFZ";
-        String orgNo="ttc20200731";
-        String loadDate="20201205";
-        String args1 = argsStr + " -Dftpfilepath=" + ftpFileToLoad + " -Dhdfsfilename="
-                + hdfsFileName + " -DorgNo=" + orgNo + " -DloadDate=" + loadDate;
-        //最终被执行的命令（重要）
-        String[] cmdarray = new String[5];
-        cmdarray[0] = "hive -e ";
-        cmdarray[1] = "load data local inpath '/data/dfs01/qingqinz/titic20200731001-ZZHJQKMB-20201201.txt' into table checkorgdev.T_KJ_ZZQKM partition (load_date='20201205',org_no='ttc20200731')";
+        String[] cmdarray = new String[3];
+        String source = "source ~/.bash_profile && ";
+        cmdarray[0] = "/bin/sh";
+        cmdarray[1] = "-c";
+        cmdarray[2] =source +  " hive -e  \" load data local inpath '/data/dfs01/qingqinz/wangchunyu001-ZZHJQKMB-20200131.txt' into table checkorgdev.T_KJ_ZZQKM partition (load_date='20201205',org_no='ttc20200731')\"";
 
         TestHiveclient testDatax = new TestHiveclient();
 
