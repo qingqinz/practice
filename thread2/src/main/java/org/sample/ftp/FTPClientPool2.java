@@ -1,4 +1,4 @@
-package ftp;//package com.smarteast.ftpclient.ftp;
+package org.sample.ftp;//package com.smarteast.ftpclient.ftp;
 //import lombok.extern.slf4j.Slf4j;
 //import org.apache.commons.net.ftp.FTPClient;
 //import org.apache.commons.pool2.BaseObjectPool;

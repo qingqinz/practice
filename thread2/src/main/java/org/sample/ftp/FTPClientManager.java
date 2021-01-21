@@ -1,4 +1,4 @@
-package ftp;
+package org.sample.ftp;
 
 import org.apache.commons.net.ftp.FTPClient;
 

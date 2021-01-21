@@ -11,6 +11,11 @@
 
     <artifactId>thread2</artifactId>
 
+    <properties>
+        <jackson-annotations-version>2.6.5</jackson-annotations-version>
+    </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -23,6 +28,21 @@
             <artifactId>commons-net</artifactId>
             <version>3.7</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.livy</groupId>
+            <artifactId>livy-client-http</artifactId>
+            <version>0.6.0-incubating</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-annotations-version}</version>
+            <scope>compile</scope>
+        </dependency>
+
 
     </dependencies>
 
@@ -41,7 +61,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.sample.TestHiveclient</mainClass>
+                            <mainClass>org.sample.load.TestHiveclient</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

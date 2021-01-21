@@ -1,10 +1,8 @@
-package ftp;
+package org.sample.ftp;
 
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-
-import java.util.Properties;
 
 public class FTPClientPool implements FTPClientManager {
 

@@ -1,14 +1,13 @@
-package ftp;
+package org.sample.ftp;
 
 import org.apache.commons.net.ftp.FTP;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Properties;
+public class FTPClientPropertieslocal {
+    private static final Logger logger = LoggerFactory.getLogger(FTPClientPropertieslocal.class);
 
-public class FTPClientProperties {
-    private static final Logger logger = LoggerFactory.getLogger(FTPClientProperties.class);
-
+//    private static Environment env;
 
     /**
      * ftp地址
@@ -184,12 +183,11 @@ public class FTPClientProperties {
         this.transferFileType = transferFileType;
     }
 
+//    static{
+//        env = ApplicationContextProvider.getBean(Environment.class);
+//    }
 
-
-    public FTPClientProperties() {
-        /*
-        local test
-         */
+    public FTPClientPropertieslocal() {
         host = "172.16.10.142";
         username = "wangchunyu001";
         password = "123";
@@ -201,18 +199,6 @@ public class FTPClientProperties {
         controlKeepAliveReplyTimeout = 300000;
         bufferSize = 1024000;
         transferFileType = 2;
-
-//        host = env.getProperty("ftphost");
-//        username = env.getProperty("ftpusername");
-//        password = env.getProperty("ftppassword");
-//        defaultTimeout = Integer.valueOf(env.getProperty("ftpClient.DefaultTimeout"));
-//        connectTimeout = Integer.valueOf(env.getProperty("ftpClient.ConnectTimeout"));
-//        dataTimeout = Integer.valueOf(env.getProperty("ftpClient.DataTimeout"));
-//        soTimeout = Integer.valueOf(env.getProperty("ftpClient.SoTimeout"));
-//        controlKeepAliveTimeout = Integer.valueOf(env.getProperty("ftpClient.ControlKeepAliveTimeout"));
-//        controlKeepAliveReplyTimeout = Integer.valueOf(env.getProperty("ftpClient.ControlKeepAliveReplyTimeout"));
-//        bufferSize = Integer.valueOf(env.getProperty("ftpClient.BufferSize"));
-//        transferFileType = Integer.valueOf(env.getProperty("ftpClient.FileType"));
         logger.info("FtpClient host:{}", host);
         logger.info("FtpClient username:{}", username);
         logger.info("FtpClient password:{}", password);
@@ -220,7 +206,7 @@ public class FTPClientProperties {
         logger.info("FtpClient ConnectTimeout:{}", connectTimeout);
         logger.info("FtpClient DataTimeout:{}", dataTimeout);
         logger.info("FtpClient SoTimeout:{}", soTimeout);
-        logger.info("CFtpClient ontrolKeepAliveTimeout:{}", controlKeepAliveTimeout);
+        logger.info("ftpClient.ControlKeepAliveTimeout:{}", controlKeepAliveTimeout);
         logger.info("FtpClient ControlKeepAliveReplyTimeout:{}", controlKeepAliveReplyTimeout);
         logger.info("FtpClient BufferSize:{}", bufferSize);
         logger.info("FtpClient transferFileType:{}", transferFileType);
