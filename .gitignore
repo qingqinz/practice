@@ -3,3 +3,4 @@ shell/target
 thread2/target
 logs/*.*
 logs/root.log
+*/target/

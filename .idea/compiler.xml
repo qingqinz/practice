@@ -6,11 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="file" />
+        <module name="ftpclient" />
         <module name="generatelog" />
         <module name="thread2" />
         <module name="shell" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="Ftpsclient" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

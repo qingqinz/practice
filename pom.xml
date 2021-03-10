@@ -12,6 +12,8 @@
         <module>generatelog</module>
         <module>shell</module>
         <module>thread2</module>
+        <module>ftpclient</module>
+        <module>file</module>
     </modules>
 
     <properties>
