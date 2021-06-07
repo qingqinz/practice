@@ -36506,3 +36506,14 @@ Copyright (C) 2010-2017, Alibaba Group. All Rights Reserved.
 2021-01-17 15:07:54 TestDatax.java INFO end to load sucess
 2021-01-17 15:07:54 TestDatax.java INFO date1:Sun Jan 17 15:07:54 CST 2021
 2021-02-23 14:19:43 FtpsclientTest.java INFO ftps0begin 2021-19-23 02:19:43
+2021-03-26 11:16:57 Download.java ERROR @ftpclient@ download file exception,titic20200731001/20210220/ADttc2020073120210220/titic20200731001-DKHX-20210220-INC.log
+java.io.FileNotFoundException: /Users/zqq/Downloads/bankfilepath/rsynctest (Is a directory)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+	at org.example.Download.main(Download.java:48)
+2021-03-26 11:17:20 Download.java DEBUG @ftpclient@ begin download file titic20200731001/20210220/ADttc2020073120210220/titic20200731001-DKHX-20210220-INC.log
+2021-03-26 11:17:20 Download.java DEBUG @ftpclient@ download file result is true,titic20200731001/20210220/ADttc2020073120210220/titic20200731001-DKHX-20210220-INC.log
+2021-03-26 11:18:32 Download.java DEBUG @ftpclient@ begin download file titic20200731001/20210220/ADttc2020073120210220/titic20200731001-DKHX-20210220-INC.log
+2021-03-26 11:18:32 Download.java DEBUG @ftpclient@ download file result is true,titic20200731001/20210220/ADttc2020073120210220/titic20200731001-DKHX-20210220-INC.log

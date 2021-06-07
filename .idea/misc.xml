@@ -5,10 +5,17 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/springdemo/pom.xml" />
+        <option value="$PROJECT_DIR$/rsynperf/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/common/pom.xml" />
+        <option value="$PROJECT_DIR$/file/pom.xml" />
+        <option value="$PROJECT_DIR$/generatelog/pom.xml" />
+        <option value="$PROJECT_DIR$/rsyncperf/pom.xml" />
+        <option value="$PROJECT_DIR$/shell/pom.xml" />
         <option value="$PROJECT_DIR$/thread/pom.xml" />
       </set>
     </option>

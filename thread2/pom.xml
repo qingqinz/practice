@@ -61,7 +61,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.sample.load.TestHiveclient</mainClass>
+                            <mainClass>org.example.load.TestHiveclient</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
