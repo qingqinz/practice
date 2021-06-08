@@ -1,3 +1,5 @@
+package com.example;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -11,7 +13,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.util.*;
 
 public class ImportExcel {
@@ -25,32 +29,35 @@ public class ImportExcel {
 
     public boolean importHighVersion(){
         boolean result = true;
-        //一共21列，第一行title
+        //一共18列，第一行title
         ImportExcel importExcel = new ImportExcel();
         try {
             XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(new File("/Users/zqq/Downloads/zhong/建表规则元数据脚本/规则组hive+tidb+oracle-update.xlsx")));
             Sheet sheet = wb.getSheetAt(0);
             List<Object> results ;
             Map<Integer,String> beanpros = new HashMap<Integer, String>() ;
-            beanpros.put(0, "rule_seq");
-            beanpros.put(1, "rule_desc");
-            beanpros.put(2, "top_category_code");
-            beanpros.put(3, "bm_cn");
-            beanpros.put(4, "bm_en");
-            beanpros.put(5, "field_en");
-            beanpros.put(6, "field_cn");
+            beanpros.put(0, "ruleSeq");
+            beanpros.put(1, "ruleDesc");
+            beanpros.put(2, "topCategoryCode");
+            beanpros.put(3, "bmCn");
+            beanpros.put(4, "bmEn");
+            beanpros.put(5, "fieldEn");
+            beanpros.put(6, "fieldCn");
             beanpros.put(7, "status");
-            beanpros.put(8, "diy_sql");
-            beanpros.put(9, "tidb_sql");
-            beanpros.put(10, "oracle_sql");
-            beanpros.put(11, "review_sys_code");
-            beanpros.put(12, "level_code");
-            beanpros.put(13, "rule_type_code");
-            beanpros.put(14, "ownership_code");
-            results = importExcel.getDatasByrc(0, beanpros, "SysUser", sheet);
+            beanpros.put(8, "diySql");
+            beanpros.put(9, "tidbSql");
+            beanpros.put(10, "oracleSql");
+            beanpros.put(11, "reviewSysCode");
+            beanpros.put(13, "levelCode");
+            beanpros.put(16, "ruleTypeCode");
+            beanpros.put(17, "ownershipCode");
+            results = importExcel.getDatasByrc(0, beanpros, TSysRule.class, sheet);
+            logger.info("size,{}",results.size());
+            int i =0;
             for(Object obj:results){
+                i++;
                 TSysRule bean = (TSysRule) obj ;
-                logger.info(bean.getRuleSeq()+"---"+bean.getBmCn());
+                logger.info("i:" + i + "---" + bean.getRuleSeq() + "---" + bean.getBmCn());
             }
         } catch (FileNotFoundException e) {
             logger.error("",e);
@@ -68,12 +75,25 @@ public class ImportExcel {
             Sheet sheet = wb.getSheetAt(0);
             List<Object> results;
             Map<Integer,String> beanpros = new HashMap<Integer, String>() ;
-            beanpros.put(0, "username");
-            beanpros.put(1, "password");
-            results = importExcel.getDatasByrc(0, beanpros, "SysUser", sheet);
+            beanpros.put(0, "ruleSeq");
+//            beanpros.put(1, "ruleDesc");
+//            beanpros.put(2, "topCategoryCode");
+//            beanpros.put(3, "bmCn");
+//            beanpros.put(4, "bmEn");
+//            beanpros.put(5, "fieldEn");
+//            beanpros.put(6, "fieldCn");
+            beanpros.put(7, "status");
+//            beanpros.put(8, "diySql");
+//            beanpros.put(9, "tidbSql");
+//            beanpros.put(10, "oracleSql");
+//            beanpros.put(11, "reviewSysCode");
+//            beanpros.put(13, "levelCode");
+//            beanpros.put(16, "ruleTypeCode");
+//            beanpros.put(17, "ownershipCode");
+            results = importExcel.getDatasByrc(0, beanpros, TSysRule.class, sheet);
             for(Object obj:results){
                 TSysRule bean = (TSysRule) obj ;
-                logger.info(bean.getRuleSeq()+"---"+bean.getBmCn());
+                logger.info(bean.getRuleSeq()+"---"+bean.getBmCn()+"---"+bean.getStatus());
             }
         } catch (FileNotFoundException e) {
             logger.error("",e);
@@ -85,16 +105,16 @@ public class ImportExcel {
         return result;
     }
 
-    public List<Object> getDatasByrc(int beginRow, Map<Integer,String> beanpros, String classPathName, Sheet sheet){
+    public List<Object> getDatasByrc(int beginRow, Map<Integer,String> beanpros, Class classPathName, Sheet sheet){
         List<Object> results = new ArrayList<>();
         try {
-            Class clazz = Class.forName(classPathName);
+            Class clazz = classPathName;
             Set<Integer> set = beanpros.keySet() ;
             Row row = sheet.getRow(beginRow);
             while(row!=null) {
                 Object obj = clazz.newInstance() ;
                 for(Integer key:set){
-                    String value = "" ;
+                    String value = "";
                     if(row!=null){
                         Cell cell = row.getCell(key) ;
                         if(cell!=null){
@@ -110,7 +130,21 @@ public class ImportExcel {
                     }
                     PropertyDescriptor pd = new PropertyDescriptor(beanpros.get(key),clazz);
                     Method wM = pd.getWriteMethod();
-                    wM.invoke(obj, value);
+
+                    Field[] f =TSysRule.class.getDeclaredFields();
+                    Type type = null;
+                    for(Field ff:f){
+                        if (ff.getName().equals(beanpros.get(key))){
+                            type = ff.getGenericType();
+                            break;
+                        }
+                    }
+                    if (null!=type && type.getTypeName().equals("java.lang.Integer")){
+                        Integer tmp = Integer.getInteger(value);
+                        wM.invoke(obj, tmp);
+                    } else {
+                        wM.invoke(obj, value);
+                    }
                 }
                 results.add(obj);
                 row = sheet.getRow(++beginRow);

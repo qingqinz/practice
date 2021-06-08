@@ -2,6 +2,9 @@ generatelog/target
 shell/target
 thread/target
 logs/*.*
-logs/root.log
 */target/
-logs/
+rsynperf/logs/
+logs/error/
+logs/info/
+logs/warn/
+logs/root.log
