@@ -2,10 +2,13 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ftpclienttest" />
+        <module name="rsynperf" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
@@ -16,10 +19,13 @@
       <module name="generatelog" target="1.8" />
       <module name="rsyncperf" target="1.8" />
       <module name="shell" target="1.8" />
+      <module name="springdemo" target="1.8" />
+      <module name="thread2" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ftpclienttest" options="" />
       <module name="rsynperf" options="-parameters" />
       <module name="springdemo" options="-parameters" />
     </option>

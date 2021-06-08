@@ -14,7 +14,7 @@ public class LoadRunner implements ApplicationRunner {
     LoadService loadService;
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        loadService.upload();
+//        loadService.upload();
 
     }
 }

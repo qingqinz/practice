@@ -3,24 +3,29 @@ package org.example.ftpclient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@Service
+@Configuration
 public class FtpClientWithPoolService extends FtpUtil {
     private static final Logger logger = LoggerFactory.getLogger(FtpClientWithPoolService.class);
 
     @Autowired
     FtpClientProperties ftpClientProperties;
-//    @Autowired
-//    Testconf testconf;
 
     public FtpClientWithPoolService() {
         ftpclientManager= new FtpClientWithPoolManager(ftpClientProperties);
     }
 
-//    public void print(){
-//        logger.info("#############"+testconf.getIp()+"###########");
-//    }
+    public void print(){
+        logger.info("#############"+ftpClientProperties.getFtphost()+"###########");
+    }
+
+
+    @Bean
+    public FtpClientWithPoolService ftpClientWithPoolService() {
+        return new FtpClientWithPoolService();
+    }
 
 }
 
