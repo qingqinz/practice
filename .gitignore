@@ -1,6 +1,6 @@
 generatelog/target
 shell/target
-thread2/target
+thread/target
 logs/*.*
 logs/root.log
 */target/

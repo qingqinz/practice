@@ -11,12 +11,11 @@
     <modules>
 <!--        <module>generatelog</module>-->
 <!--        <module>shell</module>-->
-<!--        <module>thread2</module>-->
-<!--        <module>ftpclient</module>-->
+        <module>thread</module>
+        <module>ftpclient</module>
 <!--        <module>file</module>-->
         <module>common</module>
-<!--        <module>excel</module>-->
-        <module>ftpclienttest</module>
+        <module>excel</module>
     </modules>
 
     <properties>

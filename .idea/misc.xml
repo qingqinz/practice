@@ -7,19 +7,17 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/springdemo/pom.xml" />
         <option value="$PROJECT_DIR$/rsynperf/pom.xml" />
+        <option value="$PROJECT_DIR$/ftpclientperf/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/common/pom.xml" />
-        <option value="$PROJECT_DIR$/excel/pom.xml" />
         <option value="$PROJECT_DIR$/file/pom.xml" />
-        <option value="$PROJECT_DIR$/ftpclient/pom.xml" />
         <option value="$PROJECT_DIR$/generatelog/pom.xml" />
         <option value="$PROJECT_DIR$/rsyncperf/pom.xml" />
         <option value="$PROJECT_DIR$/shell/pom.xml" />
         <option value="$PROJECT_DIR$/springdemo/pom.xml" />
-        <option value="$PROJECT_DIR$/thread/pom.xml" />
         <option value="$PROJECT_DIR$/thread2/pom.xml" />
       </set>
     </option>
